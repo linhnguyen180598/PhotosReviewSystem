@@ -1,0 +1,1671 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (132.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (87.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateUsers (20191021102208)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "phone" varchar, "remember_digest" varchar, "admin" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021102208_create_users.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20191021102208_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021102208"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (109.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateDishes (20191021102519)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "category" integer, "price" decimal, "description" varchar, "bill_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021102519_create_dishes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021102519"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (125.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateReservations (20191021103112)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_number" integer, "book_time" datetime, "user_id" integer, "table_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021103112_create_reservations.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
+  ↳ db/migrate/20191021103112_create_reservations.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_table_id" ON "reservations" ("table_id")[0m
+  ↳ db/migrate/20191021103112_create_reservations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021103112"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (87.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateBills (20191021103130)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "bills" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "price" decimal, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021103130_create_bills.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021103130"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (114.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateDishDetails (20191021103701)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "dish_details" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "score" integer, "dish_id" integer, "user_id" integer, "comment" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021103701_create_dish_details.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021103701"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (108.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateStaffs (20191021103804)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "staffs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hour_worked" float, "pay_rate" decimal, "phone" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021103804_create_staffs.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021103804"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (124.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateUtilities (20191021103932)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "utilities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "time" datetime, "water" decimal, "eletricity" decimal, "rent" decimal, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021103932_create_utilities.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021103932"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (91.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateIngredients (20191021104044)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ingredients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" decimal, "quantity" decimal, "unit" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021104044_create_ingredients.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021104044"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (341.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateCashflows (20191021110021)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "cashflows" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "bill_total" decimal, "cost_total" decimal, "net_profit" decimal, "bill_id" integer, "ingredient_id" integer, "utility_id" integer, "staff_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191021110021_create_cashflows.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021110021"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (296.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateTables (20191105232553)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "tables" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "capacity" integer, "reserved" boolean DEFAULT 0, "table_number" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191105232553_create_tables.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_tables_on_table_number" ON "tables" ("table_number")[0m
+  ↳ db/migrate/20191105232553_create_tables.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191105232553"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (89.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateMenus (20191205113451)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "menus" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191205113451_create_menus.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191205113451"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (102.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to CreateComments (20191207132957)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "user_id" integer, "dish_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_d4749d2a25"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+)[0m
+  ↳ db/migrate/20191207132957_create_comments.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  ↳ db/migrate/20191207132957_create_comments.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_dish_id" ON "comments" ("dish_id")[0m
+  ↳ db/migrate/20191207132957_create_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191207132957"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (87.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Migrating to AddNameToMenus (20191207160303)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "menus" ADD "name" varchar[0m
+  ↳ db/migrate/20191207160303_add_name_to_menus.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191207160303"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (128.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-19 10:56:29.591752"], ["updated_at", "2020-05-19 10:56:29.591752"]]
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (87.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/bin/rake:23
+Started GET "/" for ::1 at 2020-05-19 17:57:02 +0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/linhnguyen180598/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (24.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 6602ms (Views: 6596.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-05-19 17:57:14 +0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (423.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 465ms (Views: 463.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for ::1 at 2020-05-19 17:57:19 +0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered users/_form.html.erb (3.6ms)
+  Rendered users/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 103ms (Views: 75.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for ::1 at 2020-05-19 17:57:40 +0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JFl+AKsiNR1pKCDU9BIm66pMUCCC/dZUeJp9lmlh31IiSKiV/24irSgbPV58xbRgc+JUMuRd0l1zSicWZ3uEMw==", "user"=>{"name"=>"linh", "email"=>"linh@gmail.com", "phone"=>"0946674623", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:19
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "linh@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "linh"], ["email", "linh@gmail.com"], ["password_digest", "$2a$12$g//mtVOV/FKrqkadkBvIfuMVDQkXZtoT6AEYksqRq.z7aYUjoRrNC"], ["phone", "0946674623"], ["created_at", "2020-05-19 10:57:40.737986"], ["updated_at", "2020-05-19 10:57:40.737986"]]
+  ↳ app/controllers/users_controller.rb:19
+  [1m[35m (131.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:19
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 405ms (ActiveRecord: 131.6ms)
+
+
+Started GET "/users/1" for ::1 at 2020-05-19 17:57:40 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 43.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2020-05-19 17:57:44 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 52ms (Views: 48.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2020-05-19 17:57:46 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 44ms (Views: 42.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 17:57:47 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 58.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 17:57:48 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  Rendered reservations/index.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 92ms (Views: 74.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 17:57:50 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  Rendered reservations/index.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 64ms (Views: 59.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 17:57:53 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  Rendered reservations/index.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 86ms (Views: 80.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reservations/new" for ::1 at 2020-05-19 17:57:54 +0700
+Processing by ReservationsController#new as HTML
+  Rendering reservations/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered reservations/_form.html.erb (8.7ms)
+  Rendered reservations/new.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 71ms (Views: 52.5ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/reservations" for ::1 at 2020-05-19 17:58:12 +0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"f4CGW+y7RY7kiHtJyC3jYRwbpASSR3N84tbjirsgqBSRrO5WQEk0ljZ2mQb373Riht2FLqDcX6Fn0DQHeKZT0A==", "reservation"=>{"guest_number"=>"2", "book_time(3i)"=>"19", "book_time(2i)"=>"5", "book_time(1i)"=>"2020", "book_time(4i)"=>"17", "book_time(5i)"=>"00"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reservations_controller.rb:17
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:17
+  [1m[36mReservation Create (0.8ms)[0m  [1m[32mINSERT INTO "reservations" ("guest_number", "book_time", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["guest_number", 2], ["book_time", "2020-05-19 10:00:00"], ["user_id", 1], ["created_at", "2020-05-19 10:58:12.165153"], ["updated_at", "2020-05-19 10:58:12.165153"]]
+  ↳ app/controllers/reservations_controller.rb:17
+  [1m[35m (72.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/reservations_controller.rb:17
+Redirected to http://localhost:3000/reservations/1
+Completed 302 Found in 125ms (ActiveRecord: 73.3ms)
+
+
+Started GET "/reservations/1" for ::1 at 2020-05-19 17:58:12 +0700
+Processing by ReservationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:53
+  Rendering reservations/show.html.erb within layouts/application
+  Rendered reservations/show.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 98ms (Views: 93.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 17:58:15 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 48ms (Views: 46.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 17:58:15 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 58ms (Views: 56.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 17:58:16 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 97ms (Views: 95.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 17:58:16 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.9ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 107ms (Views: 104.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 17:58:17 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 144ms (Views: 141.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 17:58:18 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 58.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 17:58:18 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.9ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 83ms (Views: 81.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 17:58:18 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 119ms (Views: 116.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:12:58 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 59ms (Views: 56.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:12:59 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  [1m[36mReservation Load (0.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/reservations/index.html.erb:41
+  Rendered reservations/index.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 63ms (Views: 58.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:13:18 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/reservations/index.html.erb:41
+  Rendered reservations/index.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 67ms (Views: 62.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:13:19 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/reservations/index.html.erb:41
+  Rendered reservations/index.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 49ms (Views: 46.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/reservations/new" for ::1 at 2020-05-19 18:13:25 +0700
+Processing by ReservationsController#new as HTML
+  Rendering reservations/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.4ms)
+  Rendered reservations/_form.html.erb (4.0ms)
+  Rendered reservations/new.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 73ms (Views: 72.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:13:29 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 58ms (Views: 55.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:13:30 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 63ms (Views: 59.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:13:30 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 102ms (Views: 100.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:13:31 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 109ms (Views: 106.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:13:31 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 110ms (Views: 107.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:13:32 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 122ms (Views: 119.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-05-19 18:15:11 +0700
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:21
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:45
+  Rendering users/edit.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered users/_form.html.erb (5.8ms)
+  Rendered users/edit.html.erb within layouts/application (7.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 80ms (Views: 74.1ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/logout" for ::1 at 2020-05-19 18:15:15 +0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RdYu9oB77vPzjlNQnL3PYkwOothsICKE6GZ2fTH/1jw/RPd3TFvI8sNln1dLs159yqG05qKU0JVWSfIEa2VVIA=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:48
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:48
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:15:15 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 41ms (Views: 39.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-05-19 18:15:17 +0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 56ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:44:59 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 58ms (Views: 55.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:45:00 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 59.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:45:01 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 58ms (Views: 56.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-05-19 18:45:02 +0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 60ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-05-19 18:45:03 +0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 60ms (Views: 58.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:45:04 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 89ms (Views: 86.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:45:04 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 62ms (Views: 59.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2020-05-19 18:45:05 +0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 63ms (Views: 60.8ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/login" for ::1 at 2020-05-19 18:53:07 +0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+gtBZsd3aW9n3lEx92qVFjSe3xKXXDJudXmxuOjyr72dGhzhJe8HLj0+gf8NdiHWniEhtG2x6tIUaCsLyaNWLQ==", "session"=>{"email"=>"linh@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linh@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:38
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "remember_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_digest", "$2a$12$Hh8AIYuwNLzyD7W/7dFojOb/.divSix1p7G9GPYzkpcC0k3ENJEgu"], ["updated_at", "2020-05-19 11:53:07.769818"], ["id", 1]]
+  ↳ app/models/user.rb:38
+  [1m[35m (83.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:38
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:38
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "remember_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_digest", "$2a$12$2Vssuqn8bsiEY5bwryhfp.yY2lcD0kr6Kb6FohbSD.I69q16GTe0K"], ["updated_at", "2020-05-19 11:53:08.147331"], ["id", 1]]
+  ↳ app/models/user.rb:38
+  [1m[35m (59.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:38
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 979ms (ActiveRecord: 144.6ms)
+
+
+Started GET "/users/1" for ::1 at 2020-05-19 18:53:08 +0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 58ms (Views: 54.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:53:11 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 47ms (Views: 45.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:53:11 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 61ms (Views: 58.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:53:12 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 59ms (Views: 56.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:53:12 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/reservations/index.html.erb:41
+  Rendered reservations/index.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 84ms (Views: 79.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:54:29 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 56ms (Views: 54.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:54:29 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 70ms (Views: 67.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:54:30 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 62ms (Views: 60.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:54:31 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 59ms (Views: 55.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:54:31 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "reservations" WHERE "reservations"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:28
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/reservations/index.html.erb:41
+  Rendered reservations/index.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 81ms (Views: 74.9ms | ActiveRecord: 1.6ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "linh@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "admin" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["admin", 1], ["updated_at", "2020-05-19 11:55:41.720913"], ["id", 1]]
+  [1m[35m (63.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/reservations" for ::1 at 2020-05-19 18:55:58 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" ORDER BY "reservations"."book_time" ASC[0m
+  ↳ app/views/reservations/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:17
+  Rendered reservations/index.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 64ms (Views: 59.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:56:00 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 58.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:56:01 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 83ms (Views: 80.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:01 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.1ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 48ms (Views: 41.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:10 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 58ms (Views: 54.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/give_admin?id=1" for ::1 at 2020-05-19 18:56:12 +0700
+Processing by UsersController#give_admin as HTML
+  Parameters: {"authenticity_token"=>"wZq0sBvlUkl9YJ0gV6jzzrtZAGJEABBPYw3mLZ680/8cvCNBT6h3hQXoFWe7qLXjXYB86lRJM0AA23+5r7fNyQ==", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:40
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:40
+Redirected to http://localhost:3000/users
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:12 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/give_admin?id=1" for ::1 at 2020-05-19 18:56:14 +0700
+Processing by UsersController#give_admin as HTML
+  Parameters: {"authenticity_token"=>"a50yW4ubZ6Rm5XTgVgFcoHQkIadbNh49op4QH8n2ZKERD+vaR7tBpVYOuOeBD82/8os3mZWC7CwcsZRmk2znvQ==", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:40
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:40
+Redirected to http://localhost:3000/users
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:14 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 53ms (Views: 49.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tables" for ::1 at 2020-05-19 18:56:15 +0700
+Processing by TablesController#index as HTML
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "tables" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tables/index.html.erb:2
+  Rendered tables/index.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 58ms (Views: 54.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:56:18 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" ORDER BY "reservations"."book_time" ASC[0m
+  ↳ app/views/reservations/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:17
+  Rendered reservations/index.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 56.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:56:21 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 81ms (Views: 78.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:22 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 56ms (Views: 53.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:23 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 55ms (Views: 53.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:23 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (9.5ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 77ms (Views: 73.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:24 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (10.1ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 85ms (Views: 80.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:24 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 88ms (Views: 85.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tables" for ::1 at 2020-05-19 18:56:25 +0700
+Processing by TablesController#index as HTML
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "tables" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tables/index.html.erb:2
+  Rendered tables/index.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 60ms (Views: 56.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:56:25 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" ORDER BY "reservations"."book_time" ASC[0m
+  ↳ app/views/reservations/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:17
+  Rendered reservations/index.html.erb within layouts/application (8.0ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 129ms (Views: 124.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:56:26 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" ORDER BY "reservations"."book_time" ASC[0m
+  ↳ app/views/reservations/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:17
+  Rendered reservations/index.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 59ms (Views: 53.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tables" for ::1 at 2020-05-19 18:56:27 +0700
+Processing by TablesController#index as HTML
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "tables" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tables/index.html.erb:2
+  Rendered tables/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 58ms (Views: 55.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:28 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 63ms (Views: 60.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:28 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 60ms (Views: 57.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:29 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 61ms (Views: 57.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:56:29 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 61ms (Views: 58.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:30 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 59ms (Views: 56.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:30 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 73ms (Views: 71.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:31 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 55ms (Views: 53.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:32 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 64ms (Views: 62.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:32 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 105ms (Views: 103.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:32 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (2.0ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (11.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 116ms (Views: 110.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:35 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (9.4ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 65ms (Views: 61.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:36 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 60ms (Views: 56.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:36 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (9.5ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 95ms (Views: 91.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:36 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (1.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (11.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 145ms (Views: 139.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:36 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.1ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.1ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:37 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 63ms (Views: 59.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:37 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 64ms (Views: 60.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:38 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.3ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (11.2ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 65ms (Views: 59.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:39 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 95ms (Views: 90.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:39 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (12.5ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 80ms (Views: 75.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:40 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.3ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (13.1ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.9ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 107ms (Views: 103.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for ::1 at 2020-05-19 18:56:40 +0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ? OFFSET ?[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_shim.html.erb (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.4ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 114ms (Views: 111.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tables" for ::1 at 2020-05-19 18:56:40 +0700
+Processing by TablesController#index as HTML
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "tables" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tables/index.html.erb:2
+  Rendered tables/index.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_shim.html.erb (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 119ms (Views: 116.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/reservations" for ::1 at 2020-05-19 18:56:41 +0700
+Processing by ReservationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" ORDER BY "reservations"."book_time" ASC[0m
+  ↳ app/views/reservations/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:17
+  Rendered reservations/index.html.erb within layouts/application (12.0ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 124ms (Views: 119.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tables" for ::1 at 2020-05-19 18:56:42 +0700
+Processing by TablesController#index as HTML
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "tables" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/tables/index.html.erb:2
+  Rendered tables/index.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 64ms (Views: 60.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:42 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.3ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (10.5ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 66ms (Views: 61.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/reservation_table" for ::1 at 2020-05-19 18:56:43 +0700
+Processing by TablesController#reservation_table as HTML
+  Rendering tables/reservation_table.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NOT NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:12
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."table_id" IS NULL[0m
+  ↳ app/views/tables/reservation_table.html.erb:38
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/tables/reservation_table.html.erb:40
+  [1m[36mTable Load (0.2ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."reserved" = ?[0m  [["reserved", 0]]
+  ↳ app/views/tables/reservation_table.html.erb:43
+  Rendered tables/reservation_table.html.erb within layouts/application (8.7ms)
+  Rendered layouts/_shim.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 61ms (Views: 56.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2020-05-19 18:56:43 +0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 87ms (Views: 85.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/help" for ::1 at 2020-05-19 18:56:43 +0700
+Processing by StaticPagesController#help as HTML
+  Rendering static_pages/help.html.erb within layouts/application
+  Rendered static_pages/help.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 94ms (Views: 91.8ms | ActiveRecord: 0.1ms)
+
+

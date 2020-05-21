@@ -1,0 +1,18 @@
+<% provide(:title, 'All users')%>
+<table style = "width: 100%">
+      <caption> All tables </caption>
+      <tr> 
+        <th>Ten ng dung </th>
+        <th>Email </th>
+        <th>Admin </th>
+        <th>Give admin privilege</th>
+      </tr>
+      <% @users.each do |s| %>
+        <tr> 
+          <td><%= s.name%></td>
+          <td><%= s.email%></td>
+          <td><%= s.admin? %></td>
+          <td><%= button_to "Admin-ize", give_admin_path(id: s.id) %> </td>
+        </tr>
+      <% end%>
+    </table>
