@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="grid">
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item item__tiret">
+
+                            <a href="index.html" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fas fa-phone" style="font-size: 1.4rem; cursor: default;">  1900 1000</i>
+                            </a>
+                        </li>
+                        <li class="header__navbar-item item__tiret">
+
+                            <a href="#" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="header__navbar-item">
+
+                            <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item">
+                            <a href="index.html" class="header__navbar-icon-link">
+                                Trang chủ
+                            </a>
+                            
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="book.html" class="header__navbar-icon-link">
+                                Đặt phòng
+                            </a>
+                            
+                        </li>
+                        
+                        <li class="header__navbar-item item__tiret" id="log-in-after">
+                            <a href="#sign-up" class="header__navbar-icon-link bold__text">
+                                Đăng ký
+                            </a>
+                            
+                        </li>
+                        <li class="header__navbar-item log-in-after" id="sign-up-after">
+                            <a href="#login" class="header__navbar-icon-link bold__text">
+                                Đăng nhập
+                            </a>
+                            
+                        </li>
+                        <li class="header__navbar-item header__navbar-user " id="sign-in-user">
+                            <img src="../img/adn.png" alt="" class="header__navbar-user-img">
+                            <span class="header__navbar-user-name">Nam Ngô</span>
+                            <ul class="header__navbar-user-menu">
+                                <li class="header__navbar-user-item">
+                                    <a href="user-info.html">Thông tin tài khoản</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="">Đăng xuất</a>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+                <div class="header--with-search">
+                    <div class="header__logo">
+                        <a href="" class="header__navbar-icon-link">
+                            <img src="../img/logo.PNG" alt="photo">
+                        </a>
+                    </div>
+                    <div class="header__search">
+                        <input type="text" class="header__search-input" placeholder="Tìm phòng  ">
+                        <button class="header__search-btn">
+                            <i class="header__search-btn-icon fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- <div class="app__container">
+            <div class="grid">
+                <div class="grid__row app__content">
+                    <div class="grid__column-2">
+                        <nav class="category">
+                            <h3 class="category__heading">
+                                <i class="category__heading-icon fas fa-list"></i>
+                                Danh mục
+                            </h3>
+                            <ul class="category-list">
+                                <li class="category-item category-item--active">
+                                    <a href="#" class="category-item__link">Giá thuê 1</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Giá thuê 2</a>
+                                </li>
+                                <li class="category-item">
+                                    <a href="#" class="category-item__link">Giá thuê 3</a>
+                                </li>
+                                <li class="category-item">    
+                                    <a href="#" class="category-item__link">Giá thuê 4</a>
+                                </li>
+                                <li class="category-item"> 
+                                   <a href="#" class="category-item__link">Giá thuê 5</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="grid__column-10">
+                        <div class="home-filter">
+                            <span class="home-filter__label">Sắp xếp theo</span>
+                            <div class="select-input">
+                                <span class="select-input__label">Loại phòng</span>
+                                <i class="select-input__icon fas fa-angle-down"></i>
+                                <ul class="select-input__list">
+                                    <li class="select-input__item">
+                                        <a href="#" class="select-input__link">Phòng cao cấp</a>
+                                    </li>
+                                    <li class="select-input__item">
+                                        <a href="#" class="select-input__link">Phòng thường</a>
+                                    </li>
+                                    <li class="select-input__item"></li>
+                                </ul>
+                            </div>                            
+                            <div class="select-input">
+                                <span class="select-input__label">Giá</span>
+                                <i class="select-input__icon fas fa-angle-down"></i>
+                                <ul class="select-input__list">
+                                    <li class="select-input__item">
+                                        <a href="#" class="select-input__link">Thấp đến cao</a>
+                                    </li>
+                                    <li class="select-input__item">
+                                        <a href="#" class="select-input__link">Cao đến thấp</a>
+                                    </li>
+                                    <li class="select-input__item"></li>
+                                </ul>
+                            </div>
+                            <div class="home-filter__page">
+                                <span class="home-filter__page-num">
+                                    <span class="home-filter__page-current">1</span>
+                                    /2
+                                </span>
+                                <div class="home-filter__page-control">
+                                    <a href="#" class="home-filter__page-btn home-filter__page-btn--disable">
+                                        <i class="home-filter__page-icon fas fa-angle-left"></i>
+
+                                    </a>
+                                    <a href="#" class="home-filter__page-btn">
+                                        <i class="home-filter__page-icon fas fa-angle-right"></i>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="home-product">
+                            <div class="grid__row">
+                                <div class="grid__column-2-4">
+                                    <div class="home-product-item">
+                                        <div class="home-product-item__img" style="background-image: url(https://kenhota.com/wp-content/uploads/2019/06/kinh-nghiem-chup-hinh-can-ho-khach-san-homestay-dep-9.jpg);">
+
+                                        </div>
+                                        
+                                        <h4 class="home-product-item__name">Phòng thường</h4>
+                                        <div class="home-product-item__price">
+                                            <span class="home-product-item__price-current">700,000 đ/đêm</span>
+                                        </div>
+                                        <div class="home-product-item__square">
+                                            <span class="home-product-item__sqr">20m <sup>2</sup></span>
+                                        </div>
+                                        <div class="home-product-item__sales-off">
+                                            <div class="home-product-item__sales-off-percent">10%</div>
+                                            <lable class="home-product-item__sales-off-label">Giảm</lable>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="app__container">
+            <div class="book-room" >
+                <div class="book-room-c">
+                    <a href="book.html" class="book-room-text">ĐẶT PHÒNG</a>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="grid__row app__content">
+                    <div class="grid__column-2-12">
+                        <div class="home-product-item" style="height: 490px; overflow: hidden;">
+                            <div class="home-product-item__img" style="background-image: url(https://cache.marriott.com/marriottassets/marriott/CAIMD/caimd-pool-2210-hor-wide.jpg?interpolation=progressive-bilinear&downsize=1440px:*); height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="grid_row">
+                    <div class="grid__colum-2-12">
+                        <div class="intro-block">
+                            <div class="intro-block-heading">
+                                <div class="intro-block-item intro-block-item-fist">
+                                    <span href="#" class="intro-block-link intro-block-link-fist">Ưu đãi</span>
+                                </div>
+                                
+                            </div>      
+                            <div class="intro-block-content" id="intro-block-1">
+                                <div class="intro-block-content-item">
+                                    <div class="intro-block-content-sale">
+                                        <span class="intro-block-content-sale-heading">
+                                            Ưu đãi nhân dịp 30/4
+                                        </span>
+                                        <div class="intro-block-icon">
+                                            <i class="fas fa-tag" style="padding: 0 10px;"></i>
+                                            Ưu đãi tại khách sạn
+                                        </div>
+                                        <p class="intro-block-content-p">
+                                            Giảm 15% tiền thuê phòng trong khách sạn từ 26/4 - 5/5 nhân dịp giải phóng
+                                            miền Nam.
+                                        </p>
+                                    </div>
+                                    <div class="intro-block-content-sale">
+                                        <span class="intro-block-content-sale-heading">
+                                            Ưu đãi hấp dẫn dành cho khách hàng thân thiết
+                                        </span>
+                                        <div class="intro-block-icon">
+                                            <i class="fas fa-tag" style="padding: 0 10px;"></i>
+                                            Ưu đãi tại khách sạn
+                                        </div>
+                                        <p class="intro-block-content-p">
+                                            Giảm 10% tiền phòng dành cho khách hàng thân thiết
+                                        </p>                                   
+                                     </div>
+                                    <div class="intro-block-content-sale">
+                                        <span class="intro-block-content-sale-heading">
+                                            Ưu đãi hấp dẫn trong dịp Tết Nguyên Đán
+                                        </span>
+                                        <div class="intro-block-icon">
+                                            <i class="fas fa-tag" style="padding: 0 10px;"> </i>
+                                            Ưu đãi tại khách sạn
+                                        </div>                                        
+                                        <p class="intro-block-content-p">
+                                            Giảm 10% tiền phòng trong dịp Tết Nguyên Đán 
+                                        </p>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="grid_row">
+                    <div class="grid__colum-2-12">
+                        <div class="intro-block">
+                            <div class="intro-block-heading">
+                                <div class="intro-block-item intro-block-item-fist">
+                                    <span href="#" class="intro-block-link intro-block-link-fist">Dịch vụ</span>
+                                </div>
+                                
+                            </div>      
+                            <div class="intro-block-content" id="intro-block-1">
+                                <div class="intro-block-content-item">
+                                    
+                                    <div class="intro-block-content-content-isv">
+                                        <div class="intro-block-content-service intro-service-ctn ctn" style="height: 260px; ">
+                                            <img src="../img/pano_services-metting-event_1555753388.jpg" alt="" class="intro-block-content-service-img">
+                                            <div class="intro-block-content-service-t">
+                                                <span class="intro-block-content-service-text">HỘI HỌP & SỰ KIỆN</span>
+                                                <img src="/assets/img/service-symbol_1.png" alt="" class="intro-img">
+                                                <P class="intro-block-text">
+                                                    DỊCH VỤ HỘI NGHỊ CHUYÊN NGHIỆP PHÙ HỢP VỚI MỌI KHÁCH HÀNG
+                                                </P>
+                                            </div>
+
+                                        </div>
+                                        <div class="intro-block-content-service intro-service-ctn ctn" style="height: 260px;">
+                                            <img src="../img/pano_services-restaurants-bars_1555753521.jpg" alt="" class="intro-block-content-service-img">    
+                                            <div class="intro-block-content-service-t">
+                                                <span class="intro-block-content-service-text">NHÀ HÀNG & BAR</span>
+                                                <img src="/assets/img/service-symbol_2.png" alt="" class="intro-img">
+
+                                                <P class="intro-block-text">
+                                                    TRẢI NGHIỆM ẨM THỰC, CÁC LOẠI ĐỒ UỐNG HẢO HẠNG
+                                                </P>
+                                            </div>
+
+                                        </div>
+                                        <div class="intro-block-content-service intro-service-ctn ctn" style="height: 260px;">
+                                            <img src="../img/pool.jpg" alt="" class="intro-block-content-service-img">
+                                            <div class="intro-block-content-service-t">
+                                                <span class="intro-block-content-service-text">CÁC DỊCH VỤ KHÁC</span>
+                                                <img src="/assets/img/service-symbol_3.png" alt="" class="intro-img">
+                                                <P class="intro-block-text">
+                                                    TRẢI NGHIỆM CÁC DỊCH VỤ GIẢI TRÍ 
+                                                </P>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="grid_row">
+                    <div class="grid__colum-2-12">
+                        <div class="intro-block-heading">
+                            <div class="intro-block-item intro-block-item-fist">
+                                <span href="#" class="intro-block-link intro-block-link-fist">Về chúng tôi</span>
+                            </div>
+                            
+                        </div>  
+                        <div class="home-intro">
+                            <div class="home-intro-item">
+                                <img src="/assets/img/room1.jpg" alt="" class="home-intro-item-img">
+                                <div class="home-intro-overlay">
+                                    <div class="home-intro-content">
+                                        <p class="home-intro-text">
+                                            Khách sạn chúng tôi cung cấp sản phẩm và dịch vụ khách sạn gắn liền với
+                                            sự gìn giữ và phát triển các giá trị Việt <br>
+                                            Giá trị Việt luôn được gìn giữ xây dựng trên chính những đức tính tốt đẹp của con người Việt,
+                                             với niềm tin rằng du khách đặt chân đến mọi miền Việt Nam đều xứng đáng được trải nghiệm trọn vẹn nhất
+                                              sự quan tâm chân thành của người Việt.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="home-intro-item">
+                                <img src="/assets/img/receptionist.jpg" alt="" class="home-intro-item-img">
+                                <div class="home-intro-overlay">
+                                    <div class="home-intro-content">
+                                        <p class="home-intro-text">
+                                            Chúng tôi tin rằng Phát triển bền vững sẽ là định hướng đúng đắn cho mọi hoạt động kinh doanh. 
+                                            Bởi lẽ đó, khách sạn luôn kiên định với triết lý kinh doanh gắn liền với sứ mệnh gìn giữ và phát triển giá trị Việt, 
+                                            thực hiện và thúc đẩy các hoạt động bảo tồn và giới thiệu nét đẹp của con người Việt cùng văn hóa độc đáo của các dân tộc Việt Nam. 
+                                            Chúng tôi đồng thời nỗ lực góp phần vào sự phát triển của nền kinh tế địa phương, 
+                                            đào tạo nguồn nhân lực lĩnh vực dịch vụ du lịch, cùng với rất nhiều các hoạt động vì cộng đồng và môi trường sống khác.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+    <div class="modal-auth"  id="login">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+            <!-- register form -->
+            <!-- <div class="auth-form" id="sign-up"> 
+                <div class="auth-form__container">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng ký</h3>
+                        <span class="auth-form__switch-btn">Đăng nhập</span>                        
+                    </div>
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Nhập mật khẩu">
+                        </div>   
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu">
+                        </div>                     
+                    </div>
+                    
+                    <div class="auth-form__controls">
+                        <a href="#" style="text-decoration: none;">                        
+                            <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+                        </a>                        <button class="btn btn--primary">ĐĂNG KÝ</button>
+                    </div>
+                </div>
+                
+            </div> -->
+            
+            <!-- login form -->
+            <div class="auth-form">
+                <div class="auth-form__container">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng nhập</h3>
+                        <a href="#sign-up" class="auth-form__switch-btn">Đăng ký</a>                        
+                    </div>
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Nhập mật khẩu">
+                        </div>                               
+                    </div>
+                    <div class="auth-form__aside">
+                        <div class="auth-form__help">
+                            <a href="#forgot-pwrd" class="auth-form__help-link">Quên mật khẩu ?</a>
+                        </div>
+                    </div>
+                    <div class="auth-form__controls">
+                        <a href="#" style="text-decoration: none;">                        
+                            <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+                        </a>
+                        <a href="#sign-in-user" onclick="closeAuthForm()" style="text-decoration: none;">       
+                             <button class="btn btn--primary">ĐĂNG NHẬP</button>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="modal-auth"  id="sign-up">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+            <!-- register form -->
+            <div class="auth-form" id="sign-up"> 
+                <div class="auth-form__container">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng ký</h3>
+                        <a href="#login" class="auth-form__switch-btn" > Đăng nhập</a>                        
+                    </div>
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Nhập mật khẩu">
+                        </div>   
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu">
+                        </div>                     
+                    </div>
+                    
+                    <div class="auth-form__controls">
+                        <a href="#" style="text-decoration: none;">                        
+                            <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+                        </a>                        
+                        <button class="btn btn--primary">ĐĂNG KÝ</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="modal-auth"  id="forgot-pwrd">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+            <!-- register form -->
+            <div class="auth-form" id="sign-up"> 
+                <div class="auth-form__container">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng ký</h3>
+                        <a href="#login" class="auth-form__switch-btn" > Đăng nhập</a>                        
+                    </div>
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                            <span class="auth-form__text">Hệ thống sẽ gửi mật khẩu mới vào email của bạn. Hãy kiểm tra hộp thư !</span>                   
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="auth-form__controls">
+                        <a href="#" style="text-decoration: none;">                        
+                            <button class="btn btn--normal auth-form__controls-back">TRỞ LẠI</button>
+                        </a>                        
+                        <button class="btn btn--primary">XÁC NHẬN</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    <footer class="footer">
+        <div class="footer-heading">
+            <span class="footer-heading-sp">Theo dõi</span>
+            <div class="footer-heading-ctn">
+                <a href="#" class="footer-link">
+                    <i class="fab fa-facebook footer-icon"></i>
+                </a>
+                <a href="#" class="footer-link">
+                    <i class="fab fa-instagram footer-icon"></i>
+
+                </a>
+            </div>
+        </div>
+        <div class="footer-ctn">© 2020 HM Hotel. All Rights Reserved.</div>
+    </footer>
+</body>
+<script>
+    function closeAuthForm() {
+        document.getElementById("log-in-after").style.display = "none";
+        document.getElementById("sign-up-after").style.display = "none";
+    }
+</script>
+</html>
