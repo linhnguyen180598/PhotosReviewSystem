@@ -11,7 +11,9 @@
   - Ngô Hải Nam
   - Đào Anh Vũ
   
-**Ngôn ngữ sử dụng:** Ruby
+**Ngôn ngữ sử dụng:**
+  - Front-end: JavaScript, HTML, CSS
+  - Back-end: Ruby
 
 **Framework:** Ruby On Rails
 
