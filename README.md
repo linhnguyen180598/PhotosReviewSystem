@@ -44,22 +44,22 @@ rbenv global 2.7.1
 gem install rails -v 6.0.3.1
 ```
 ###### 4. Installing gems:
-**Bundler**
+       - Bundler
 ```
 gem install bundler
 ```
-**SQLite3**
+       - SQlite3
 ```
 gem install sqlite3
 ```
-**Yarn**
+       - Yarn
 ```
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
 sudo apt install yarn
 ```
-**Node.js**
+       - Node.js
 ```
 sudo apt install nodejs
 ```
