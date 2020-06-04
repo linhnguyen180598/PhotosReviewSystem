@@ -15,6 +15,15 @@
   - Front-end: JavaScript, HTML, CSS
   - Back-end: Ruby (Ruby On Rails)
 
+**Các tài liệu liên quan:**
+  - [Product Backlog & Sprint Planning](https://docs.google.com/spreadsheets/d/13KR-gwnWPj--xxj4YbJIrc1VDAascocgh0uSKjQ81Rw/edit?usp=sharing
+)
+  - [Q&A](https://docs.google.com/spreadsheets/d/1A-DSyNagNyATmeWkIUS-xG-eRZ2nrp6k46toIko-oHg/edit?usp=sharing
+)
+  - [Biểu đồ Usecase](https://github.com/linhnguyen180598/PhotosReviewSystem/tree/master/Documents/Usecase%20Diagrams)
+  - [Biểu đồ hoạt động](https://github.com/linhnguyen180598/PhotosReviewSystem/tree/master/Documents/Activity%20Diagrams)
+  - [Biểu đồ tuần tự](https://github.com/linhnguyen180598/PhotosReviewSystem/tree/master/Documents/Sequence%20Diagrams)
+  - [Biểu đồ ER](https://github.com/linhnguyen180598/PhotosReviewSystem/tree/master/Documents/ER%20Diagram)
 **Tài liệu tham khảo:**
   - [Rails Tutorial](https://guides.rubyonrails.org/)
   - [Font Awesome](https://fontawesome.com/)
