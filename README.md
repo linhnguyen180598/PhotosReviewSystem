@@ -17,6 +17,7 @@
 
 **Tài liệu tham khảo:**
   - [Rails Tutorial](https://guides.rubyonrails.org/)
+  - [Font Awesome](https://fontawesome.com/)
   - [Sprint Planning Template](https://teams.microsoft.com/l/file/E6DBE9A8-8BDF-4C47-AFB8-FF67078FE764?tenantId=06f1b89f-07e8-464f-b408-ec1b45703f31&fileType=xlsx&objectUrl=https%3A%2F%2Fhusteduvn.sharepoint.com%2Fsites%2FIT4556Q%2FClass%20Materials%2FSprint%20Planning%20Template.xlsx&baseUrl=https%3A%2F%2Fhusteduvn.sharepoint.com%2Fsites%2FIT4556Q&serviceName=teams&threadId=19:744efed5fb2049e4b0810078e35280ad@thread.tacv2&groupId=218367a3-2f6d-4313-b2bf-54920f999bde)
   - [Build Instagram by Rails](https://medium.com/luanotes/build-instagram-by-ruby-on-rails-part-1-fef7837ee399)
   - [Basic Writing And Formatting Syntax](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
