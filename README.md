@@ -63,13 +63,28 @@ sudo apt install yarn
 ```
 sudo apt install nodejs
 ```
-## Khởi chạy server:
+## Chạy server:
+- Clone code:
+```
+git clone https://github.com/linhnguyen180598/PhotosReviewSystem.git
+```
+- Truy cập vào Folder Code:
+```
+cd PhotosReviewSystem
+```
+- Cài Gems:
 ```
 bundle install
+```
+- Nối Database:
+```
 rake db:migrate
+```
+- Chạy Server
+```
 rails server
 ```
-**Sau đó ta truy cập vào địa chỉ localhost:3000**
+- Sau đó mở trình duyệt web và truy cập vào địa chỉ localhost:3000
 
 
 
