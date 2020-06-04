@@ -24,6 +24,7 @@
   - [Biểu đồ hoạt động](https://github.com/linhnguyen180598/PhotosReviewSystem/tree/master/Documents/Activity%20Diagrams)
   - [Biểu đồ tuần tự](https://github.com/linhnguyen180598/PhotosReviewSystem/tree/master/Documents/Sequence%20Diagrams)
   - [Biểu đồ ER](https://github.com/linhnguyen180598/PhotosReviewSystem/tree/master/Documents/ER%20Diagram)
+  
 **Tài liệu tham khảo:**
   - [Rails Tutorial](https://guides.rubyonrails.org/)
   - [Font Awesome](https://fontawesome.com/)
