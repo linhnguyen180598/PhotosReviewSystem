@@ -13,9 +13,7 @@
   
 **Ngôn ngữ sử dụng:**
   - Front-end: JavaScript, HTML, CSS
-  - Back-end: Ruby
-
-**Framework:** Ruby On Rails
+  - Back-end: Ruby (Ruby On Rails)
 
 **Tài liệu tham khảo:**
   - [Rails Tutorial](https://guides.rubyonrails.org/)
