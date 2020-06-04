@@ -1,5 +1,5 @@
 module SessionsHelper
-
+  # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -23,12 +23,13 @@ module SessionsHelper
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
-        log_in user
-        @current_user = user
+       log_in user
+       @current_user = user
       end
     end
   end
 
+  # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?
   end
@@ -47,7 +48,7 @@ module SessionsHelper
     @current_user = nil
   end
 
-    # Redirects to stored location (or to the default).
+  # Redirects to stored location (or to the default).
   def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)

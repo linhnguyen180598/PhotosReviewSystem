@@ -1,32 +1,30 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user, :load_dish, only: [:create, :destroy]
+  def new
+    @comment = @post.comments.new
+  end
 
   def create
-    @comment = @dish.comments.build(comment_params)
-    @comment.user_id = current_user.id
-    @comment.dish_id = @dish.id
-    if @comment.save
-      flash[:success] = "Commented!"
-      redirect_to dish_path(@dish)
-    else
-      flash[:danger] = "No comment"
-      redirect_to dish_path(@dish)
+    @post=Post.find_by_id(params[:post_id])
+    @comment= @post.comments.new(comment_params)
+    @comment.user_id= current_user.id
+    respond_to do |format|
+      if @comment.save
+      format.html { redirect_to post_path(@post)  }
+      format.json { render json: @comment, status: created, location: @comment}
+      end
     end
   end
 
   def destroy
-    @comment = Comment.find_by(id: params[:id])
+    @post=Post.find_by_id(params[:post_id])
+    @comment= @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to dish_path(@dish)
+
+    redirect_to index_path
   end
 
   private
-  def comment_params
-    params.require(:comment).permit(:body)
-  end
-
-  def load_dish
-    @dish = Dish.find_by(id: params[:dish_id])
-  end
-
+   def comment_params
+    params.require(:comment).permit(:post_id, :content, :user_id)
+   end
 end

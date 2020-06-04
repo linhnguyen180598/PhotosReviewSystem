@@ -10,120 +10,103 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_160303) do
+ActiveRecord::Schema.define(version: 2019_11_30_155949) do
 
-  create_table "bills", force: :cascade do |t|
-    t.decimal "price"
-    t.integer "user_id"
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "cashflows", force: :cascade do |t|
-    t.decimal "bill_total"
-    t.decimal "cost_total"
-    t.decimal "net_profit"
-    t.integer "bill_id"
-    t.integer "ingredient_id"
-    t.integer "utility_id"
-    t.integer "staff_id"
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
+    t.integer "post_id"
+    t.text "content"
     t.integer "user_id"
-    t.integer "dish_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dish_id"], name: "index_comments_on_dish_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "dish_details", force: :cascade do |t|
-    t.integer "score"
-    t.integer "dish_id"
+  create_table "hash_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
     t.integer "user_id"
-    t.string "comment"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "dishes", force: :cascade do |t|
-    t.string "name"
-    t.integer "category"
-    t.decimal "price"
-    t.string "description"
-    t.integer "bill_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name"
-    t.decimal "price"
-    t.decimal "quantity"
-    t.string "unit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "menus", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-  end
-
-  create_table "reservations", force: :cascade do |t|
-    t.integer "guest_number"
-    t.datetime "book_time"
+  create_table "notifications", force: :cascade do |t|
+    t.string "status"
     t.integer "user_id"
-    t.integer "table_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["table_id"], name: "index_reservations_on_table_id"
-    t.index ["user_id"], name: "index_reservations_on_user_id"
-  end
-
-  create_table "staffs", force: :cascade do |t|
-    t.string "name"
-    t.float "hour_worked"
-    t.decimal "pay_rate"
-    t.string "phone"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tables", force: :cascade do |t|
-    t.integer "capacity"
-    t.boolean "reserved", default: false
-    t.string "table_number"
+  create_table "posts", force: :cascade do |t|
+    t.string "caption"
+    t.integer "user_id"
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["table_number"], name: "index_tables_on_table_number"
+  end
+
+  create_table "posts_hash_tags", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hash_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hash_tag_id"], name: "index_posts_hash_tags_on_hash_tag_id"
+    t.index ["post_id"], name: "index_posts_hash_tags_on_post_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "followed_id"
+    t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email"
+    t.string "password"
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
     t.string "password_digest"
-    t.string "phone"
     t.string "remember_digest"
-    t.boolean "admin", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email"
-  end
-
-  create_table "utilities", force: :cascade do |t|
-    t.datetime "time"
-    t.decimal "water"
-    t.decimal "eletricity"
-    t.decimal "rent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

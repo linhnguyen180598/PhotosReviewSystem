@@ -1,35 +1,40 @@
-Rails.application.routes.draw do
-  get 'comments/creat'
-  get 'comments/destroy'
-  get 'sessions/new'
-  root 'static_pages#home'
-  get '/help', to: 'static_pages#help'
-  get '/about', to: 'static_pages#about'
-  get '/contact', to: 'static_pages#contact'
-  get  '/signup',  to: 'users#new'
-  post '/signup',  to: 'users#create'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  Rails.application.routes.draw do
+  get 'search' => 'search#index'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  post '/admin/dishes/new',  to: 'admin/dishes#create'
-  resources :dishes, only: [:index, :show] do
-    resources :comments, only: [:create, :destroy]
+  get     'sessions/new'
+  post    'sessions/create'
+  delete  'sessions/destroy'
+
+  resources :posts do
+    resources :likes
   end
 
-  namespace :admin do
-    resources :users
-    resources :dishes
-    resources :staffs
-    resources :tables
-    resources :bills
-    resources :menus
+  resources :users do
+    member do
+      get :following, :followers
+    end
   end
+  resources :posts do
+    resources :comments
+  end
+  resources :relationships, only: [:create, :destroy]
+  get '/index', to: 'posts#index'
+  get    '/post',   to: 'posts#new'
+  post   '/post',   to: 'posts#create'
 
+  delete   '/comment',   to: 'comments#destroy'
+  delete 'comments/destroy'
 
-  post '/give_admin',  to: 'users#give_admin'
-  get '/reservation_table', to: 'tables#reservation_table'
-  post '/reservation_table', to: 'tables#assign_table'
+  root 'static_pages#home'
+  get   '/home',        to: 'static_pages#home'
+  get   '/help',        to: 'static_pages#help'
+  get   '/about',       to: 'static_pages#about'
+  get   '/contact',     to: 'static_pages#contact'
+  get   '/signup',      to: 'users#new'
+  post  '/signup',      to: 'users#create'
+  get   '/edit',        to: 'users#update'
 
-  resources :users , :reservations, :tables
 end
-  

@@ -1,20 +1,16 @@
 <%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  
-    <%= f.label :email %>
-    <%= f.email_field :email, class: 'form-control' %>
+  <%= render 'layouts/error_messages',object: @user %>
+  <%= f.label :name %>
+  <%= f.text_field :name, placeholder: " Enter your name ", class: 'form-control'  %>
 
-    <%= f.label :phone %>
-    <%= f.phone_field :phone, class: 'form-control' %>
-  
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control' %>
-  
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-  
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-  <% end %>
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: " Enter your email ", class: 'form-control' %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: "Enter your password", class: 'form-control', require:true  %>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation, placeholder: " Please confirm your password", class: 'form-control', require:true  %>
+
+  <%= f.submit "Create my account", class: "btn btn-primary"%>
+<%end%>

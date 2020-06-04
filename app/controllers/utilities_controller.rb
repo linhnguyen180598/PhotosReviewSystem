@@ -1,2 +1,0 @@
-class UtilitiesController < ApplicationController
-end

@@ -1,11 +1,54 @@
-<% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-4 avatar">
+      <div class="wrapper">
+        <%if @user.avatar.attached? %>
+          <%= image_tag @user.avatar%>
+        <%else%>
+          <%=image_tag(asset_path("Avatar.png"))%>
+        <%end%>
+      </div>
+    </div>
+    <div class="col-md-8 basic-info">
+      <div class="user-wrapper">
+        <h2 class="username"><%=@user.name%></h2>
+        <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
+          <button>Edit Profile</button>
+        </a>
+      </div>
+      <ul class="posts">
+        <li><span><%= @posts.count %></span> posts</li>
+        <%=render "stats" %>
+      </ul>
+      <%= render "follow_form" if logged_in? %>
+    </div>
+  </div>
+</div>
+
+<div class="user-tabs">
+  <a class="tab active" href="">
+    <i class="fa fa-th"></i>
+    POSTS
+  </a>
+  <a class="tab" href="">
+    <i class="fa fa-tv"></i>
+    IGTV
+  </a>
+  <a class="tab" href="">
+    <i class="fa fa-bookmark"></i>
+    SAVED
+  </a>
+  <a class="tab" href="">
+    <i class="fa fa-tag"></i>
+    TAGGED
+  </a>
+</div>
+<div class="user-images">
+  <% @posts.each do |post|%>
+    <div class="wrapper">
+      <%=link_to post_path(post) do%>
+        <%= image_tag post.image, class: 'main-image' %>
+      <%end %>
+    </div>
+  <% end %>
 </div>

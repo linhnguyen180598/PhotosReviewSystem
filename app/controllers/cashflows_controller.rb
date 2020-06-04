@@ -1,2 +1,0 @@
-class CashflowsController < ApplicationController
-end
