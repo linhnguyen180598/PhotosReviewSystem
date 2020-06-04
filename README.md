@@ -36,12 +36,12 @@ source ~/.bashrc
 ###### 2. Installing Ruby with ruby-build:
 ```
 rbenv install -l
-rbenv install 2.7.1
-rbenv global 2.7.1
+rbenv install 2.6.3
+rbenv global 2.6.3
 ```
 ###### 3. Installing Rails:
 ```
-gem install rails -v 6.0.3.1
+gem install rails -v 5.2.4
 ```
 ###### 4. Installing gems:
 - Bundler
